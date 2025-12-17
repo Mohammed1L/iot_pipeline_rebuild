@@ -40,17 +40,20 @@ Streaming buffers spikes, reduces DB pressure, supports real-time processing, an
 
 # Verification Screenshots
 
+## Python environment setup
+![Python Setup](Screenshots/01_python_setup.png)
+
 ## Kafka & Zookeeper Running
 ![Kafka Running](Screenshots/02_kafka_zookeeper_running.png)
 
 ## Kafka Topic Created
-![Topic Created](screenshots/02_topic_created.png)
-
-## Kafka Consumer Receiving IoT Data
-![Consumer](screenshots/03_consumer_receiving_data.png)
+![Topic Created](Screenshots/03_topic_created.png)
 
 ## Python IoT Producer Sending Data
-![Producer](screenshots/04_producer_sending_data.png)
+![Producer](Screenshots/04_producer_sending_data.png)
+
+## Kafka Consumer Receiving IoT Data
+![Consumer](Screenshots/05_consumer_receiving_data.png)
 
 # Quick handoff info for Spark stage
 
