@@ -93,8 +93,8 @@ producer   python:3.9-slim      Up
 spark      spark-kafka:3.5.1    Up
 ```
 
-![Services Status](<img width="842" height="99" alt="image" src="https://github.com/user-attachments/assets/6013d26d-cbe4-468d-a4dd-9fedaf67ce3e" />
-)
+<img width="842" height="99" alt="image" src="https://github.com/user-attachments/assets/2dad528d-4a5a-4e26-a6eb-2debe9a0a85b" />
+
 
 ### Step 4: Verify Kafka Topic Exists
 
