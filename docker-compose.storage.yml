@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: iot_postgres
+    environment:
+      POSTGRES_USER: iot
+      POSTGRES_PASSWORD: iotpass
+      POSTGRES_DB: iotdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./storage/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      iot-network:
+        aliases:
+          - postgres
+          - iot_postgres
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    container_name: iot_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - postgres
+    networks:
+      - iot-network
+
+
+networks:
+  iot-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  grafana_data:

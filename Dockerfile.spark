@@ -7,6 +7,8 @@ RUN apt-get update && \
     apt-get install -y wget gosu && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip install --no-cache-dir psycopg2-binary
+
 # Download and install Kafka connector JAR and dependencies
 # Using version 3.5.1 to match Spark version
 # Kafka connector requires: kafka-clients, spark-token-provider-kafka-0-10, and commons-pool2
@@ -17,7 +19,10 @@ RUN wget -q https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10
     chmod 644 /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.5.1.jar && \
     chmod 644 /opt/spark/jars/spark-token-provider-kafka-0-10_2.12-3.5.1.jar && \
     chmod 644 /opt/spark/jars/kafka-clients-3.5.1.jar && \
-    chmod 644 /opt/spark/jars/commons-pool2-2.12.0.jar
+    chmod 644 /opt/spark/jars/commons-pool2-2.12.0.jar && \
+    wget -q https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar -O /opt/spark/jars/postgresql-42.7.3.jar && \
+    chmod 644 /opt/spark/jars/postgresql-42.7.3.jar
+
 
 # Verify JARs are present
 RUN ls -lh /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.5.1.jar && \
@@ -25,7 +30,10 @@ RUN ls -lh /opt/spark/jars/spark-sql-kafka-0-10_2.12-3.5.1.jar && \
 
 # Copy entrypoint script
 COPY spark-entrypoint.sh /usr/local/bin/spark-entrypoint.sh
-RUN chmod +x /usr/local/bin/spark-entrypoint.sh
+# RUN chmod +x /usr/local/bin/spark-entrypoint.sh
+# Fix Windows CRLF -> Linux LF + make executable
+RUN sed -i 's/\r$//' /usr/local/bin/spark-entrypoint.sh && \
+    chmod +x /usr/local/bin/spark-entrypoint.sh
 
 # Keep as root for entrypoint to fix permissions, then switch to spark user
 # USER spark
