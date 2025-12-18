@@ -189,7 +189,8 @@ Batch: 46
 
 **Note:** Let it run for 10-15 seconds to capture multiple batches. Press `Ctrl+C` to stop following logs.
 
-![Spark Streaming Output](image.png)
+<img width="862" height="694" alt="image" src="https://github.com/user-attachments/assets/45d3c3d6-ff46-4f4a-a9b0-852681ed8d3c" />
+
 
 ### 2. View Producer Logs
 
@@ -210,7 +211,8 @@ producer  | Sent: {'sensor_id': 'sensor-1', 'temperature': 25.43, 'humidity': 65
 producer  | Sent: {'sensor_id': 'sensor-2', 'temperature': 28.15, 'humidity': 66.13, 'timestamp': '2025-12-18T12:00:01.234567'}
 ```
 
-![Producer Output](image.png)
+<img width="1016" height="313" alt="image" src="https://github.com/user-attachments/assets/52e81a3e-34d9-4751-a7c3-ccdb7be15ef5" />
+
 
 ### 3. Verify Kafka Topic Messages
 
@@ -233,7 +235,8 @@ docker exec kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server lo
 
 **Note:** This will consume 5 messages and exit automatically. Press `Ctrl+C` to stop earlier.
 
-![Kafka Messages](image.png)
+<img width="1493" height="115" alt="image" src="https://github.com/user-attachments/assets/cb5e6114-0bf9-45fc-bee7-38d3ae7566ef" />
+
 
 ### 4. View Complete Spark Application Logs
 
@@ -250,7 +253,8 @@ docker-compose logs spark --tail 100
 - Multiple batch processing outputs
 - Clean formatted table output
 
-![Complete Spark Logs](image.png)
+<img width="703" height="556" alt="image" src="https://github.com/user-attachments/assets/16af842c-8cc0-462b-bc76-5bf6625e441b" />
+
 
 ### 5. Monitor Real-time Streaming
 
@@ -266,7 +270,8 @@ docker-compose logs -f spark | Select-String -Pattern "Batch|sensor|temperature|
 - Filtered output showing only relevant data
 - Continuous batch processing
 
-![Filtered Streaming Output](image.png)
+<img width="1104" height="1014" alt="image" src="https://github.com/user-attachments/assets/5304d04d-4315-4c33-b7fc-dacc0b43e6f9" />
+
 
 ## Understanding the Output
 
