@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import time
 from datetime import datetime
@@ -6,7 +7,7 @@ from datetime import datetime
 from kafka import KafkaProducer
 
 TOPIC = "iot_sensors"
-BOOTSTRAP_SERVERS = "localhost:9092"
+BOOTSTRAP_SERVERS = os.getenv("BOOTSTRAP_SERVERS", "localhost:9092")
 
 producer = KafkaProducer(
     bootstrap_servers=BOOTSTRAP_SERVERS,
