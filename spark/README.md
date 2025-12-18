@@ -106,6 +106,7 @@ docker exec kafka /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server local
 ```
 iot_sensors
 ```
+<img width="853" height="63" alt="image" src="https://github.com/user-attachments/assets/da5696e2-1a77-4bd7-9b33-69248837c79c" />
 
 If the topic doesn't exist, create it:
 
