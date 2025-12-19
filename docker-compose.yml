@@ -79,3 +79,10 @@ volumes:
   spark-checkpoint:
     driver: local
 
+  postgres_data:
+    driver: local
+    
+  grafana_data:
+    driver: local
+
+
